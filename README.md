@@ -1,5 +1,12 @@
 # Claude Code 上下文健康诊断指南
 
+# Claude Code Context Health Diagnostic Guide
+
+> **English Summary**: Claude Code sessions degrade over time through 5 failure modes: **Context Rot** (early instructions forgotten), **Context Pollution** (irrelevant data diluting signal), **Context Drift** (gradual goal deviation), **Context Explosion** (window overflow triggering compression), and **Context Cross-Contamination** (cross-project interference). This guide provides symptoms, diagnostic methods, and mitigation strategies for each. Key prevention: one task per session, persist decisions to `CLAUDE.md`, use subagents for exploration, checkpoint regularly.
+
+---
+
+
 > 帮助你识别和修复 Claude Code 会话中的上下文退化问题。
 
 Claude Code 在长会话中可能出现五类上下文问题。本指南提供每类问题的**定义、症状、诊断方法和缓解策略**。
