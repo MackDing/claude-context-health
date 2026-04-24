@@ -1,0 +1,32 @@
+# Claude Code Context Health Diagnostic Guide
+
+> Identify and fix context degradation in Claude Code sessions. Covers 5 failure modes with symptoms, diagnostics, and mitigation strategies.
+
+## The 5 Context Failure Modes
+
+1. **Context Rot** — Early instructions/decisions compressed or forgotten. Claude stops following session-start rules.
+2. **Context Pollution** — Irrelevant data (verbose errors, large file dumps) dilutes effective signal in the context window.
+3. **Context Drift** — Gradual deviation from original task goal. Bug fix becomes module rewrite.
+4. **Context Explosion** — Context window fills rapidly, triggers auto-compression, massive information loss.
+5. **Context Cross-Contamination** — Different project contexts interfere. Project A patterns applied to Project B.
+
+## Key Prevention Strategies
+
+- One task per session (most effective)
+- Persist critical decisions to CLAUDE.md + memory, don't rely on session memory
+- Use subagents for exploratory work (their context stays isolated)
+- Regular checkpoints — verify Claude still understands the big picture
+- New sessions are cheap — when in doubt, start fresh
+
+## Quick Health Check
+
+- Ask Claude to restate all architecture decisions → can't recall = Context Rot
+- Compare initial request vs current action → diverged = Context Drift  
+- Check referenced paths/functions actually exist → phantom refs = Cross-Contamination
+- Monitor git diff --stat → unexpected file count = Drift
+
+## Links
+
+- Repository: https://github.com/MackDing/claude-context-health
+- Author: https://github.com/MackDing
+- OPC Hub: https://opc.ren
